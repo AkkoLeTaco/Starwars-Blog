@@ -1,9 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				
-			]
+			res: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -13,11 +11,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadSomeData: () => {
 				fetch("https://www.swapi.tech/api/people", {
 					method: "GET",
-					headers: { "Content-Type": "application/json" },
 					redirect: "follow",
 				})
 					.then(response => response.json())
-					.then(result => console.log(result))
+					.then((result) => setStore({res : result}))
 					.catch(error => console.log('error', error));
 			},
 			changeColor: (index, color) => {

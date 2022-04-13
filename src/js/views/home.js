@@ -6,7 +6,9 @@ export const Home = () => {
 
 	
 	return(
-	<div>
-	<Cards/>
+	<div className="container">
+		<div className="justify-content-center card-group">
+			<Cards />
+		</div>
 	</div>
 	)}

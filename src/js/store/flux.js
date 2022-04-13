@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			res: []
+			res: [],
+			img: "https://starwars-visualguide.com/assets/img/characters/"
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -21,15 +22,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//get the store
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
+				//we have to loop the entire details array to look for the respective index
 				//and change its color
-				const demo = store.demo.map((elm, i) => {
+				const details = store.details.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({ details: details });
 			}
 		}
 	};

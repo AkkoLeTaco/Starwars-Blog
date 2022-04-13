@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../styles/demo.css";
+import "../../styles/details.css";
 
-export const Demo = () => {
+export const Details = () => {
 	return (
 		<div>
+			hghg
   	   </div>
 	);
 };

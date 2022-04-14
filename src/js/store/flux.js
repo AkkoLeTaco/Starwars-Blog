@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			res: [],
-			img: "https://starwars-visualguide.com/assets/img/characters/"
+			img: "https://starwars-visualguide.com/assets/img/characters/",
+			des: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -17,6 +18,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then((result) => setStore({res : result}))
 					.catch(error => console.log('error', error));
+			},
+			loadDetails: () => {
+
+
+				fetch(`https://www.swapi.tech/api/people/1`, {
+					method: "GET",
+					redirect: "follow",
+				})
+					.then(response => response.json())
+					.then((result) => setStore({des : result}))
+					.catch(error => console.log('error', error));
+
 			},
 			changeColor: (index, color) => {
 				//get the store

@@ -17,7 +17,11 @@ const Cards = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{ele.name}</h5>
                                     <p className="card-text">Card title</p>
-                                    <Link to={"/details/" + ele.uid} className="btn btn-primary px-2.5">Learn more</Link>
+                                    <Link to={"/details/" + ele.uid} className="btn btn-primary px-2.5">
+                                        <button onClick={()=>{
+                                            actions.loadDetails(ele.uid)
+                                        }}></button>
+                                        Learn more</Link>
                                     <button type="button" className="btn btn-outline-warning mx-5"><i className="fa fa-heart" aria-hidden="true"></i></button>
                                 </div>
                             </div>

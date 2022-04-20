@@ -19,10 +19,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((result) => setStore({res : result}))
 					.catch(error => console.log('error', error));
 			},
-			loadDetails: () => {
+			loadDetails: (num) => {
 
 
-				fetch(`https://www.swapi.tech/api/people/1`, {
+				fetch(`https://www.swapi.tech/api/people/${num}`, {
 					method: "GET",
 					redirect: "follow",
 				})

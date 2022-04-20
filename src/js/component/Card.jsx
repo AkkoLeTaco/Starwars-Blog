@@ -6,27 +6,26 @@ import { Context } from "../store/appContext";
 const Cards = () => {
     const { store, actions } = useContext(Context)
     console.log(store)
+
     return (
         <>
-            {store.res.results && store.res.results.map((ele, index) => {
+            {store.CharacterCards.results && store.CharacterCards.results.map((ele, index) => {
                 return (
-                    <>
-                        <div className="row row-cols-1 row-cols-md-9 g-1 mx-2 mb-3">
+                        <div key={index}className="row row-cols-1 row-cols-md-9 g-1 mx-2 mb-3">
                             <div className="card" style={{ width: "18rem" }}>
                                 <img className="card-img-top" src={store.img + ele.uid + ".jpg"} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">{ele.name}</h5>
-                                    <p className="card-text">Card title</p>
-                                    <Link to={"/details/" + ele.uid} className="btn btn-primary px-2.5">
-                                        <button onClick={()=>{
-                                            actions.loadDetails(ele.uid)
-                                        }}></button>
-                                        Learn more</Link>
-                                    <button type="button" className="btn btn-outline-warning mx-5"><i className="fa fa-heart" aria-hidden="true"></i></button>
+                                    <p className="card-text">Gender: {ele.gender}</p>
+                                    <Link to={"/details/" + ele.uid}>
+                                        <button className="btn btn-primary px-2.5" onClick={()=>{
+                                            actions.loadDetails(ele.name)
+                                        }}>Learn more</button>
+                                        </Link>
+                                    <button onClick={()=>{actions.loadFavorites(ele.uid)}}type="button" className="btn btn-outline-warning mx-5"><i className="fa fa-heart" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
-                    </>
                 )
             })}
         </>

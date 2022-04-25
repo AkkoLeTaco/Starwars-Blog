@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			CharacterCards: {},
+			CharacterCards: [],
 			img: "https://starwars-visualguide.com/assets/img/characters/",
 			CharacterDescription: {},
 			CharacterFavorite: []
@@ -27,12 +27,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log('error', error));
 
 			},
-			loadFavorites: (name) => {
+			loadFavorites: (obj) => {
 				const store = getStore()
-				console.log(store.CharacterFavorite)
-				if (store.CharacterFavorite.find(fav => fav.uid != name.uid)){
-					setStore({CharacterFavorite : [...store.CharacterFavorite, name]})
-				}
+					setStore({CharacterFavorite : [...store.CharacterFavorite, obj]})
+			},
+			deleteFavorites: (del) => {
+				const store = getStore()
+				const dele = store.CharacterFavorite.filter((lists, index) => index !== del);
+				setStore({CharacterFavorite : dele})
 			}
 		}
 	};

@@ -3,10 +3,15 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
+
 const Cards = () => {
     const { store, actions } = useContext(Context)
-    console.log(store)
-
+    const duplicate = (ele) => {
+        if (store.CharacterFavorite.includes(ele)) {
+            alert("no")}
+        else {actions.loadFavorites(ele)
+    }
+    }  
     return (
         <>
             {store.CharacterCards.results && store.CharacterCards.results.map((ele, index) => {
@@ -18,11 +23,9 @@ const Cards = () => {
                                     <h5 className="card-title">{ele.name}</h5>
                                     <p className="card-text">Gender: {ele.gender}</p>
                                     <Link to={"/details/" + ele.uid}>
-                                        <button className="btn btn-primary px-2.5" onClick={()=>{
-                                            actions.loadDetails(ele.name)
-                                        }}>Learn more</button>
-                                        </Link>
-                                    <button onClick={()=>{actions.loadFavorites(ele.uid)}}type="button" className="btn btn-outline-warning mx-5"><i className="fa fa-heart" aria-hidden="true"></i></button>
+                                        <button className="btn btn-primary px-2.5" onClick={()=>{actions.loadDetails(ele.uid)}}>Learn more</button>
+                                    </Link>
+                                    <button onClick={()=>{duplicate(ele)}}type="button" className="btn btn-outline-warning mx-5"><i className="fa fa-heart" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
